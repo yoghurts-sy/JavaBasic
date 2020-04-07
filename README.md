@@ -1,6 +1,5 @@
 # JavaBasic
-一、Git和GitHub的使用 
-------- 
+## 一、Git和GitHub的使用 
 **(1) Github第一次上传步骤：**  
 
 步骤 | 说明
