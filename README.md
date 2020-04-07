@@ -1,6 +1,6 @@
 # JavaBasic
 
-<img src="D:\eclipse_root\eclipse\com.java.basic\u=4274393615,4090509011&amp;fm=26&amp;gp=0.jpg" style="zoom:50%;" />
+![](https://github.com/yoghurts-sy/JavaBasic/blob/master/u%3D4274393615%2C4090509011%26fm%3D26%26gp%3D0.jpg)
 
 **一、Git和GitHub的使用**  
 
