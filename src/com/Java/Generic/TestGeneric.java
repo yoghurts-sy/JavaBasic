@@ -3,7 +3,11 @@ package com.Java.Generic;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-/* 使用泛型
+/* 使用泛型 (泛型只能是引用类型，不能是基本类型,除以下两个外其他都是首字母大写）
+ * 基本类型            包装类
+ * 	int 		  Integer
+ *  char 		  Character
+ * 
  * 好处：
  * 		1.避免了数据转化的麻烦，存储是什么类型，输出就是什么类型
  * 		2.把不使用泛型运行期可能抛出的异常，提前到编译器
