@@ -1,4 +1,4 @@
-package com.Java.collocation;
+package com.Java.Collection;
 
 import java.util.ArrayList;
 import java.util.Collection;
