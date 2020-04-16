@@ -14,7 +14,7 @@
 5.git commit -m '附带的信息' | 将文件推到commit区  
 6.git remote add origin 仓库地址	| 关联git仓库(repository)  
 7.git pull --rebase origin master | 将仓库和文件合并  
-8.git push -u origin maste | 将文件推到远程仓库  		  
+8.git push -u origin master | 将文件推到远程仓库  		  
 
 ### (2) git回溯某个历史版本  
 步骤 | 说明
