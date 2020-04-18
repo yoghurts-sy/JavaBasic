@@ -9,7 +9,7 @@ import java.util.Collection;
 	 * 数组中存储的是同一类型的元素，可以存储基本数据类型值。
 	 * 集合存储的都是对象。而且对象的类型可以不一致。
 	 * 
-	 * Collection 常用功能
+	 * Collection 常用功能 有序的
 	 * 
 	 * `public boolean add(E e)`：  把给定的对象添加到当前集合中 。
 	 * `public void clear()` :清空集合中所有的元素。
@@ -28,8 +28,11 @@ public class CollectionInterface {
 			 * 使用多态
 			 */
 			Collection<String> coll = new ArrayList<String>();
-			coll.add("南宁");
+
+			coll.add("绿城");
 			coll.add("是绿城");
+			coll.add("南宁");
+
 			System.out.println(coll);
 			
 			System.out.println("集合是否包含南宁：" + coll.contains("南宁"));
