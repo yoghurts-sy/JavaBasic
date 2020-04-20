@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Layout;
 
 import java.awt.*;
 

@@ -1,4 +1,4 @@
-package GUI;
+package GUI.Layout;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
