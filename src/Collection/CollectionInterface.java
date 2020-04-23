@@ -19,7 +19,8 @@ import java.util.Collection;
 	 * `public int size()`: 返回集合中元素的个数。
 	 * `public Object[] toArray()`: 把集合中的元素，存储到数组中。
 	 * 
-	 * 
+	 * 王煦 tips 注意：
+	 * 		在迭代器或NBfor中不能使用add、remove ?
 	 */
 
 public class CollectionInterface {

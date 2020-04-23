@@ -3,6 +3,7 @@ package Collection;
 import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.ListIterator;
 
 /*`Iterator`主要用于迭代访问（即遍历）`Collection`中的元素
  * 因此`Iterator`对象也被称为迭代器
@@ -38,5 +39,8 @@ public class CollectionIterator {
 			}
 			
 			/*System.out.println(it.next());*/
+
+
+			
 		}
 }

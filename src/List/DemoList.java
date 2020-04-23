@@ -3,6 +3,7 @@ package List;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /*
  * java.util.List接口 extends java.util.Collection
@@ -16,6 +17,10 @@ import java.util.List;
  * 		public E get(int index):返回集合中指定位置的元素。
  * 		public E remove(int index):移除列表中指定位置的元素,返回的是被移除的元素。
  * 		public E set(int index, E element):用指定元素替换集合中指定位置的元素,返回值的更新前的元素
+ *
+ * ListIterator:本质是带一个链表的迭代器，只能对线性表List容器操作
+ * 		hasPrevious()
+ * 		previous()
  * 
  * 注意：
  * 		防止索引越界
@@ -76,6 +81,19 @@ public class DemoList {
 		String obj = list.get(100);
 		System.out.println(obj);
 		*/
+
+		System.out.println("\n----*---");
+		ListIterator<String> iterator = list.listIterator();
+		while (iterator.hasNext()) {
+			String msg = iterator.next();
+			System.out.print(msg);
+		}
+		System.out.println("\n-------");
+		while (iterator.hasPrevious()) {
+			String msg = iterator.previous();
+			System.out.print(msg);
+		}
+
 	}
 
 }
