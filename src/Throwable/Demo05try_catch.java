@@ -21,6 +21,9 @@ import java.io.IOException;
  *      2.如果无异常，就不会执行catch中的代码。
  *      3.finally不能单独使用，必须和try一起使用
  *      4.finally一般用于资源释放（资源的回收），无论程序是否出现异常，最后都要释放资源（IO）
+ *      5.一个try使用多个catch时，几个catch里定义的异常变量有子父类关系，子类必须写上面。
+ *      6.多个catch异常变量也可以统一化为一个Exception e
+ *      7.RuntimeException可以直接交给JVM虚拟机处理
  *
  *   Throwable类中3个异常处理的方法:
  *      1.String getMessage() :返回throwable的简短描述
