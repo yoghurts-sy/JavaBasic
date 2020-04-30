@@ -12,18 +12,34 @@ import java.io.IOException;
  *      }
  *      ...
  *      catch() {可以接多个catch
+ *      }finally {
  *
  *      }
+ *
  *   注意：
  *      1.如果try中产生了异常，就会执行catch中的语句，catch之后的代码也会得到执行
  *      2.如果无异常，就不会执行catch中的代码。
+ *      3.finally不能单独使用，必须和try一起使用
+ *      4.finally一般用于资源释放（资源的回收），无论程序是否出现异常，最后都要释放资源（IO）
+ *
+ *   Throwable类中3个异常处理的方法:
+ *      1.String getMessage() :返回throwable的简短描述
+ *      2.String toString() :返回throwable较详细的描述
+ *      3.void printStockTrace() :JVM打印异常对象的默认方法，信息最全面最后输出，并中止程序
  */
 public class Demo05try_catch {
     public static void main(String[] args) /*throws IOException*/ {
         try {
             readFile("c:\\a.tdt");
         } catch (IOException e) {
-            System.out.println(e.getMessage());
+
+            System.out.println("1." + e.getMessage());
+            System.out.println("2." + e.toString());
+            System.out.println("3." + e);//= System.out.println(e.toString());
+            e.printStackTrace();
+            /*
+            为什么e.printStackTrace();最后才输出？？？
+             */
         } finally {
             System.out.println("后续代码1");
         }
