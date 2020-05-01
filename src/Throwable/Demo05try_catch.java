@@ -43,6 +43,11 @@ public class Demo05try_catch {
             /*
             为什么e.printStackTrace();最后才输出？？？
              */
+            try {
+                readFile("d:\\a.txt");
+            }catch (IOException e1) {
+                e1.printStackTrace();
+            }
         } finally {
             System.out.println("后续代码1");
         }

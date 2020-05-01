@@ -3,7 +3,7 @@ package Throwable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-/** throws关键字:异常处理的第一种方法，交给别人处理
+/** 声明异常：throws关键字:异常处理的第一种方法，交给别人处理
  *      注意：1.throws关键字必须写在方法声明处
  *           2.throws关键字后面跟的声明必须是Exception或者是Exception的子类
  *           3.方法需要抛出多个异常时，throws必须跟多个异常

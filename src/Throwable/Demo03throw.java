@@ -2,7 +2,7 @@ package Throwable;
 
 import java.util.Objects;
 
-/** throw关键字
+/** 抛出异常：throw关键字
  *      作用：可以使用throw关键字在指定方法中抛出指定异常
  *      格式：throw new xxxException（"异常产生的原因"）
  *      注意：1.throw关键字必须写在方法的内部
