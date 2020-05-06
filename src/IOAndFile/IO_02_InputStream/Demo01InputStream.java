@@ -36,7 +36,7 @@ public class Demo01InputStream {
     public static void main(String[] args) throws IOException {
         FileInputStream fis = new FileInputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndFile\\IO_01_OutputStream\\a.txt");
         int len = 0;
-        /*当移动到结尾的下一位时，为-1*/
+        /*当移动到结尾的下一位时，为-1（结束标记）*/
         while((len = fis.read()) != -1){
             System.out.println((char)len);
         }
