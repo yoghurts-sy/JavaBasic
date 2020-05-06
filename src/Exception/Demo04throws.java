@@ -1,4 +1,4 @@
-package Throwable;
+package Exception;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

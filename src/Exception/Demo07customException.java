@@ -1,4 +1,4 @@
-package Throwable;
+package Exception;
 
 /**
  * 自定义异常类：

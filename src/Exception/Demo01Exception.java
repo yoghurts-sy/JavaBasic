@@ -1,8 +1,4 @@
-package Throwable;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+package Exception;
 
 /**
  * java.lang.Throwable 是Java语言中所有错误或异常的超类

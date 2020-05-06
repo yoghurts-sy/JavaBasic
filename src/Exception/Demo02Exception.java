@@ -1,4 +1,4 @@
-package Throwable;
+package Exception;
 
 /**
  * 异常产生的原理：

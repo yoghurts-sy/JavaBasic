@@ -1,4 +1,4 @@
-package Throwable;
+package Exception;
 
 import java.util.Objects;
 
