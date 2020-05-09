@@ -22,13 +22,26 @@ import java.util.Set;
  *          OutputStream out：字节输出流，不能写入中文
  *          Writer writer：字符输出流，可以写中文
  *          String comments:注释，不能使用中文，因为默认Unicode编码
+ *
+ *
+ *      可以使用Properties集合中的方法load，把硬盘中的文件（键值对）,读取到集合中使用
+ *          void load(InputStream inStream)：字节输入流，不能读取含有中文的键值对
+ *          void load(Reader reader)：字符输入流，能读中文
+ *      注意：
+ *          1.存储键值对的文件中，键与值默认的连接符号可以使用=或空格（其他符号）
+ *          2.存储键值对的文件中，可以使用#进行注释，被注释的键值对不会在被读取
+ *          3.存储键值对的文件中，键与值默认都是字符串，不用再加引号
+ *
  */
 public class Demo01Properties {
     public static void main(String[] args) throws IOException {
+
         show01();
         show02();
         show03();
+        show04();
     }
+
 
     private static void show01() {
         Properties properties = new Properties();
@@ -67,5 +80,17 @@ public class Demo01Properties {
 
         properties.store(new FileOutputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndProperties\\IO_06_Properties\\prop2.txt"), "2020/5/9");
         //会自动释放资源
+    }
+
+    private static void show04() throws IOException {
+        System.out.println("--------------");
+        Properties properties = new Properties();
+
+        properties.load(new FileReader("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndProperties\\IO_06_Properties\\prop2.txt"));
+        Set<String> set = properties.stringPropertyNames();
+        for (String key : set) {
+            String value = properties.getProperty(key);
+            System.out.println(key + "=" + value);
+        }
     }
 }
