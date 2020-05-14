@@ -13,7 +13,7 @@ public class Demo02OutputStream {
     public static void main(String[] args) throws IOException {
         FileOutputStream fos = new FileOutputStream(new File("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndFile\\OutputStream\\b.txt"));
         /**
-         * 面试题：在文件中显示100是3个字节
+         * 面试题：在文件中显示100是几个字节（3）
          * `public void write(byte[] b)`
          *  如果写的第一个字节是正数（0~127），那么显示的时候就会查询ASCⅡ表
          *  如果写的第一个字节是负数，那第一个字节化为会和第二个字节组成中文显示查询GBK(两个字节是中文)

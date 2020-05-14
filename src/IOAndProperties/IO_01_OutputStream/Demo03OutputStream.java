@@ -3,7 +3,8 @@ package IOAndProperties.IO_01_OutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**  续写:使用两个参数的构造方法
+/**  续写(追加写):
+ * 使用两个参数的构造方法
  *      `public FileOutputStream(File file, boolean append)`： 创建文件输出流以写入由指定的 File对象表示的文件。
  *      `public FileOutputStream(String name, boolean append)`： 创建文件输出流以指定的名称写入文件。
  *   参数：

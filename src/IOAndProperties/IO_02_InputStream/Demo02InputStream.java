@@ -9,7 +9,7 @@ import java.io.IOException;
  *       明确两件事情：
  *          1.方法的参数byte[]的作用？
  *              起到缓存的作用，存储每次读取到的多个字节
- *              数组的长度一般记为1024（1KB）或者时1024的整数倍
+ *              数组的长度一般记为1024（1KB）或者是1024的整数倍
  *          2.方法的返回值int是什么？
  *              每次读取的有效字节个数
  *
@@ -30,7 +30,7 @@ public class Demo02InputStream {
         第三次读取    E                      1
         第四次读取                          -1
 
-            最后     E        D
+        bytes最后    E        D
         */
         /*
         byte[] bytes = new byte[2];

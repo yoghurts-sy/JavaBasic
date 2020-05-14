@@ -19,7 +19,7 @@ public class Demo01trycatch {
          * 提高变量的作用域，让finally可以使用
          * 变量在定义时可以没有值，但是在使用时必须有值，所以赋值null
          */
-        FileWriter fw = null;
+        FileWriter fw = null;//文件字符输出流
         try {
             /*fw不赋值null，如果fw创建失败，fw没有值，而下面的close语句就会异常，空指针异常*/
             fw = new FileWriter("F:\\test.txt");

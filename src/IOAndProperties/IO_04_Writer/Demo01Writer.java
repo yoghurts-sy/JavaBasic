@@ -6,7 +6,7 @@ import java.io.IOException;
 /** 字符输出流：Writer
  *  `java.io.Writer ：
  *  `抽象类是表示用于写出字符流的所有类的超类，将指定的字符信息写出到目的地。
- *  它定义了字节输出流的基本共性功能方法：
+ *  它定义了字符输出流的基本共性功能方法：
  *      `void write(int c)` 写入单个字符。
  *      `void write(char[] cbuf) `写入字符数组。
  *      `abstract  void write(char[] cbuf, int off, int len) `写入字符数组的某一部分,off数组的开始索引,len写的字符个数。

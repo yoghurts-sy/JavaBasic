@@ -3,7 +3,7 @@ package IOAndProperties.IO_01_OutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/** java.io.OutputStream:字符输出流
+/** java.io.OutputStream:字节输出流
  *      此抽象类是表示输出字节流的所有类的超类
  *
  *  定义了一些子类共性的成员方法：
@@ -18,7 +18,7 @@ import java.io.IOException;
  *      作用：
  *          把内存的数据写入到硬盘的文件中
  *      构造方法：
- *          (String name)创建一个向具有指定名称的文件中写入数据的输出文件流。
+ *          FileOutputStream(String name)创建一个向具有指定名称的文件中写入数据的输出文件流。
  *          FileOutputStream(File file)创建一个向指定File对象表示的文件中写入数据的文件输出流
  *      参数：
  *          写入数据的目的地

@@ -18,7 +18,7 @@ public class Demo03CopyFile {
     public static void main(String[] args) throws IOException {
         long start = System.currentTimeMillis();
         FileInputStream fis = new FileInputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\yoghurt.jpg");
-        FileOutputStream fos = new FileOutputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndFile\\IO_02_InputStream\\yoghurt.jpg");
+        FileOutputStream fos = new FileOutputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndProperties\\IO_02_InputStream\\yoghurt.jpg");
 
         byte[] buffer = new byte[1024];
         int len = 0;
