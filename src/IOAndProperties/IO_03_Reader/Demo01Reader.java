@@ -25,14 +25,22 @@ import java.io.IOException;
  */
 public class Demo01Reader {
     public static void main(String[] args) throws IOException {
-        FileReader fr = new FileReader("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndFile\\IO_03_Reader\\test.txt");
+        FileReader fr = new FileReader("C:\\Users\\yoghurts\\IDEA_WorkSpace\\homework+oj\\src\\com\\homework\\IODemo\\English.txt");
 
-        char[] cbuffer = new char[1024];
+        char[] cbuffer = new char[2048];
+        String msg = "can";
+        int count = 0;
         int len = 0;
         while ((len = fr.read(cbuffer)) != -1){
-            System.out.print(new String(cbuffer, 0, len));
+            /*
+            if (cbuffer.toString().contains(msg)) {
+                System.out.println("true");
+            }
+             */
+            System.out.println(cbuffer.toString());
+            count++;
         }
-
+        System.out.println(count);
         fr.close();
     }
 }

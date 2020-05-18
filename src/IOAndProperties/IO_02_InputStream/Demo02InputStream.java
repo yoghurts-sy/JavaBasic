@@ -2,6 +2,8 @@ package IOAndProperties.IO_02_InputStream;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /** 字节输入流一次读取多个字节的方法
  *      `public int read(byte[] b)`：
@@ -21,7 +23,7 @@ import java.io.IOException;
 public class Demo02InputStream {
     public static void main(String[] args) throws IOException {
         /*a.txt  abcd*/
-        FileInputStream fis = new FileInputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\com.java.basic\\src\\IOAndFile\\IO_01_OutputStream\\a.txt");
+        FileInputStream fis = new FileInputStream("C:\\Users\\yoghurts\\IDEA_WorkSpace\\homework+oj\\src\\com\\homework\\IODemo\\test.doc");
        /*
         原理：
                  bytes[0] bytes[1]  len读取的有效字节个数
@@ -52,10 +54,17 @@ public class Demo02InputStream {
 
          */
 
-        byte[] bytes = new byte[1024];
+        byte[] bytes = new byte[2048];
+        String msg = "can";
+        byte[] msgBytes = msg.getBytes();
         int len = 0;
         while ((len = fis.read(bytes)) != -1){
-            System.out.println(new String(bytes, 0, len));
+            //System.out.println(new String(bytes, 0, len));
+            String temp = new String(bytes, "GBK");
+            if (temp.contains(msg)) {
+                System.out.println("1");
+            }
+            System.out.println(temp);
         }
 
         fis.close();
