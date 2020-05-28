@@ -1,8 +1,5 @@
 package MultiThread.Demo01Thread;
 
-/**
- *
- */
 public class Demo01myThread extends Thread{
     @Override
     public void run() {

@@ -14,7 +14,7 @@ public class Demo01LockRunnableImp implements Runnable{
             lock.lock();
             if (i <= ticket) {
                 try {
-                    Thread.sleep(10);
+                    Thread.sleep(0);
                     System.out.println("窗口" + Thread.currentThread().getName() + "正在卖第" + i + "张票");
                     i++;
                 } catch (InterruptedException e) {
