@@ -2,10 +2,35 @@ package GUI.Demo03Snake;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class gamePanel extends JPanel {
+public class gamePanel extends JPanel implements KeyListener, ActionListener {
     //定义蛇的数据结构
     int length;
+    int[] snakeX = new int[600];
+    int[] snakeY = new int[500];
+    String fx;
+    boolean isStart = false;
+
+    /*定时器*/
+    Timer timer = new Timer(100, this);
+
+    public gamePanel() {
+        init();
+        this.setFocusable(true);
+        this.addKeyListener(this);
+    }
+
+    public void init() {
+        int length = 3;
+        snakeX[0] = 100;snakeY[0] = 100;
+        snakeX[1] = 75;snakeY[1] = 100;
+        snakeX[2] = 50;snakeY[2] = 100;
+        fx = "X";
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -14,5 +39,43 @@ public class gamePanel extends JPanel {
         gameData.header.paintIcon(this,g,25,11);//头部广告
         g.fillRect(25,75,850,600);
 
+        if (isStart == false) {
+            g.setColor(Color.white);
+            g.setFont(new Font("微软雅黑",Font.BOLD,40));
+            g.drawString("按下空格开始游戏！",300,300);
+        }
     }
+
+
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        int keyCode = e.getKeyCode();
+        if (keyCode == KeyEvent.VK_SPACE) {
+            isStart = !isStart;
+            repaint();
+        }
+    }
+    /*定时器*/
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (isStart) {
+            for (int i = length - 1; i > 0 ; i--) {
+                snakeX[i] = snakeX[i - 1];
+                snakeY[i] = snakeY[i - 1];
+            }
+            snakeX[0] = snakeX[0] + 25;
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+
+    }
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+
 }
