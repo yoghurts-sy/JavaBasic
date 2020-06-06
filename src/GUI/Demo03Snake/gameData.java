@@ -11,6 +11,7 @@ public class gameData {
     public static URL rightURL = gameData.class.getResource("static/right.png");
     public static URL bodyURL = gameData.class.getResource("static/body.png");
     public static URL foodURL = gameData.class.getResource("static/food.png");
+    public static URL bigfoodURL = gameData.class.getResource("static/bigfood.png");
 
     public static ImageIcon header = new ImageIcon(headerURL);
     public static ImageIcon up = new ImageIcon(upURL);
@@ -19,6 +20,7 @@ public class gameData {
     public static ImageIcon right = new ImageIcon(rightURL);
     public static ImageIcon body = new ImageIcon(bodyURL);
     public static ImageIcon food = new ImageIcon(foodURL);
+    public static ImageIcon bigfood = new ImageIcon(bigfoodURL);
 
 
 
