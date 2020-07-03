@@ -2,7 +2,7 @@
   <artifact type="jar" build-on-make="true" name="com.java.basic:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/com_java_basic_jar</output-path>
     <root id="archive" name="com.java.basic.jar">
-      <element id="module-output" name="com.java.basic" />
+      <element id="module-output" name="JavaBasic" />
     </root>
   </artifact>
 </component>
