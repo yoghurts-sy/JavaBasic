@@ -367,3 +367,300 @@ class MyCalculator extends Frame {
 			SELECT * FROM student LIMIT 6,3; --第三页
 
 		3. limit 是一个MySQL的方言
+
+
+
+## 约束
+	* 概念：对表中的数据进行限定，保证数据的正确性、有效性和完整性
+	* 分类：
+		1. 主键约束：primary key
+		2. 非空约束：not null
+		3. 唯一约束：unique
+		4. 外键约束：foreign key
+
+
+	* 非空约束：not null
+		1. 创建表时添加约束
+			CREATE TABLE stu (
+				id INT,
+				NAME VARCHAR(20) NOT NULL 
+			);
+		2. 创建表后添加约束
+			ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL;
+		3. 删除name的非空约束
+			ALTER TABLE stu MODIFY NAME VARCHAR(20);
+
+	* 唯一约束：unique，值不能重复
+		1. 创建表时，添加唯一约束
+			CREATE TABLE stu (
+				id INT,
+				phone_number VARCHAR(20) UNIQUE --添加了唯一约束 
+			);
+	
+			* 注意mysql中，唯一约束限定的列的值可以有多个null
+
+		2. 解除唯一约束
+			ALTER TABLE stu DROP INDEX phone_number;
+
+		3. 在创建表之后，添加唯一约束
+			ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;
+
+	* 主键约束：primary key
+		1. 注意：
+			1. 非空且唯一
+			2. 一张表只能有一个字段为主键
+			3. 主键就是表中记录的唯一标识
+
+		2. 在创建表时，添加主键约束
+			CREATE TABLE stu (
+				id INT primary key,
+				name VARCHAR(20) 
+			);
+		
+		3. 删除主键
+			错误：alter table stu modify id int;
+			alter table stu drop primary key;
+
+		4. 创建完表后，添加主键
+			alter table stu modify id int primary key;
+		
+		5. 自动增长：
+			1. 概念：如果某一列是数值类型的，使用auto_increment可以完成值的增长
+
+			2. 在创建表时，添加主键约束，并完成主键自增长。(按上一条记录增长)
+				CREATE TABLE stu (
+				id INT primary key auto_increment,
+				name VARCHAR(20) 
+			);
+
+			3. 删除自动增长
+			ALTER TABLE stu MODIFY id INT;
+
+			4. 添加自动增长
+			ALTER TABLE stu MODIFY id INT auto_increment;
+
+
+	* 外键约束：foreign key，让表与表产生关系，从而保证数据的正确性
+		1. 在创建表时，可以添加外键
+			* 语法：
+				create table 表名(
+					...,
+					外键列
+					constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+			);
+
+		2. 删除外键
+			alter table 表名 drop foreign key 外键名称;
+
+		3. 创建表之后，添加外键
+			alter table 表名 add constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称);
+
+		4. 级联操作
+			1. 添加级联操作
+				语法：alter table 表名 add constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称) on update cascade on delete cascade;
+
+			2. 分类：
+				1. 级联更新：on update cascade
+				2. 级联删除：on delete cascade
+					* 谨慎使用
+
+
+## 数据库的设计
+
+	1. 多表之间的关系
+		1. 分类
+			1. 一对一：
+				* 如：人和身份证
+				* 分析：一个人只有一个身份证，一个身份证只能对应一个人
+
+			2. 一对多(多对一)：
+				* 如：部门和员工
+				* 分析：一个部门有多个员工，一个员工只能对应一个部门
+
+			3. 多对多：
+				* 如：学生和课程
+				* 分析：一个学生可以选择很多门课程，一个课程也可以被很多学生选择
+
+		2. 实现
+			1. 一对多
+				* 在多的一方建立外键，指向一的一方的主键
+
+			2. 多对多
+				* 多对多的关系实现需要借助第三张中间表，中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键。
+
+			3. 一对一
+				* 使用同一张表
+
+	2. 数据库设计的范式
+		* 概念：在设计数据库时，需要遵循的一些规范，要遵循更高级的范式要求，必须遵守前边的所有范式要求
+
+
+		* 分类：
+			1. 第一范式（1NF）：数据库表的每一列都是不可分割的原子数据项
+			2. 第二范式（2NF）：1NF的基础上，非码属性必须完全依赖于候选码（在1NF基础上消除非主属性对主码的部分函数依赖）
+				* 几个概念：
+					1. 函数依赖：A-->B，如果通过A属性(属性组)的值，可以确定唯一B属性的值，则称B依赖于A
+					2. 完全函数依赖：A-->B，如果A是一个属性组，则B属性值的确定需要依赖A属性组中所有的属性值。
+					3. 部分函数依赖：A-->B，如果A是一个属性组，则B属性值的确定只需要依赖A属性组中某一些属性值即可。
+					4. 传递函数依赖：A-->B B-->C，如果通过A属性(属性组)的值，可以确定唯一B属性的值，在通过B属性(属性组)的值可以确定唯一C属性的值，则称C传递函数依赖于A
+					5. 码：如果在一张表中，一个属性或属性组，被其他属性所完全依赖，则称这个属性(属性组)为该表的码。
+					
+			3. 第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）
+			
+
+	3. 数据库的备份和还原
+
+		1. 命令行：
+			* 语法：
+				* 备份：mysqldump -u用户名 -p密码 > 保存的路径
+				* 还原：
+					1. 登录数据库
+					2. 创建数据库
+					3. 使用数据库
+					4. 执行文件：source 文件路径
+						* sql文件
+
+		2. 图形化工具
+
+
+
+## SQL多表查询
+	* 查询语法：
+		select
+			列名列表
+		from
+			表名列表
+		where
+			...
+
+	* 笛卡尔积：
+		* 有两个集合A，B取这两个集合的所有组成情况
+		* 要完成多表查询，需要消除无用的数据
+
+	* 多表查询的分类：
+		1. 内连接查询
+			1. 隐式内连接：使用while条件消除无用数据
+				SELECT
+					t1.name,
+					t1.gender,
+					t2.name
+				FROM
+					emp t1,
+					dept t2,
+				WHERE
+					t1.dept_id = t2.id;
+
+			2. 显式内连接
+				SELECT * FROM emp (INNER) JOIN dept ON emp.dept_id = dept.id;
+
+			3. 内连接查询：
+				1. 从哪些表中查询数据
+				2. 条件是什么
+				3. 查询哪些字段
+		2. 外连接查询：
+			1. 左外连接：
+				* 语法：select 字段列表 from 表1 left join 表2 on 条件;
+				* 查询的是左表的所有数据以及和右表的交集部分
+			2. 右外连接：
+				* 语法：select 字段列表 from 表1 right join 表2 on 条件;
+				* 查询的是右表的所有数据以及和左表的交集部分
+		3. 子查询
+				
+## JDBC
+	
+	1. 解决sql注入问题：使用PreparedStatement对象来解决问题
+	2. 预编译的sql使用?作为占位符
+	3. 步骤：
+		1. 导入驱动jar包
+		2. 注册驱动
+		3. 获取数据库的连接对象Connection
+		4. 定义sql
+			* 注意：sql的参数使用?作为占位符
+
+		5. 获取执行sql语句的对象PreparedStatement Connection.PreparedStatement(String sql)
+		6. 给?赋值
+			* 方法：setXXX(参数1, 参数2)
+				* 参数1：表示第几个?, 从1开始
+				* 参数2：表示?的值
+		7. 执行sql，接受返回对象，不需要传递sql语句
+		8. 处理结果
+		9. 释放资源
+
+	4. 注意：后期我们都会使用上述步骤来完成增删改查的所有操作
+		1. 可以防止SQL注入问题
+		2. 效率更高
+
+## JDBC控制事务
+	1. 事务：一个包含多个步骤的业务操作，如果这个业务操作被事务管理，则这多个步骤要么同时成功，要么同时失败。
+	2. 操作：
+		1. 开启事务
+		2. 提交事务
+		3. 回滚事务
+	3. 使用Connection对象来管理事务
+		* 开启事务：setAutoCommit(boolean autoCommit)：调用该方法设置参数为false，即开启事务
+			* 在执行sql之前开启事务
+		* 提交事务：commit()
+			* 在所有sql都执行完后提交事务
+		* 回滚事务：rollback()
+			* 一般在catch(抓一个大一点的异常)里回滚
+		
+
+## 数据库连接池
+	1. 概念：其实就是一个容器(集合)，存放数据库连接的容器。
+		* 当系统初始化好后，容器被创建，容器中会申请一些连接对象，当用户访问数据库时，从容器中获取连接对象，用户访问完之后，会将连接对象归还给容器。
+
+	2. 好处：
+		1. 节约资源
+		2. 用户访问高效
+
+	3. 实现：
+		1. 标准接口：DataSource Javax.sql包下的
+			1. 方法：
+				* 获取连接：getConnection()
+				* 归还连接：Connection.close()
+
+		2. 数据库连接池技术：
+			1. C3P0：
+			2. Druid：Alibaba
+
+	4. C3P0：数据库连接池技术
+		* 步骤：
+			1. 导入C3P0的jar包 
+				* 不要忘记导入数据库驱动jar包
+			2. 定义配置文件
+				* 名称：c3p0-config.xml 或 c3p0.properties
+				* 路径：直接将文件放在src目录下即可。
+
+			3. 创建核心对象 数据库连接池对象 ComboPooledDataSource
+			4. 获取连接：getConnection
+
+	5. Druid：
+		* 步骤：
+			1. 导入jar包 
+			2. 定义配置文件
+				* 是properties类型的
+				* 可以叫任意名称，可以放在任意目录下。
+			3. 加载配置文件
+			4. 获取数据库连接池对象：通过工厂来获取 DruidDataSourceFactory
+			5. 获取连接getConnection
+
+
+## Spring JDBC
+	* Spring框架对JDBC的简单封装，提供了一个JDBCTemplate对象的简化JDBC开发
+	* 步骤：
+		1. 导入jar包
+		2. 创建JDBCTemplate对象，依赖于数据源DataSource
+			* JDBCTemplate template = new JDBCTemplate(ds);
+			
+		3. 调用JDBCTemplate的方法完成CRUD的操作
+			* update()：执行DML增删改操作。
+			* queryForMap()：查询结果将结果集封装为map集合
+				* 注意：将列名封装为map为key，将值封装为value，将这条记录封装为一个map集合，这个方法查询到的结果集长度只能为1
+			* queryForList()：查询结果将结果集封装为list集合
+				* 注意：将每一条记录封装为一个map集合，再将map集合装载到list集合中
+			* query():查询结果，将结果封装为JavaBean对象
+				* query的参数：RowMapper
+					* 一般我们使用BeanPropertyRowMapper实现类，可以完成数据到JavaBean 的自动封装
+					* new BeanPropertyRowMapper<你的类型>(类型.class)
+			* queryForObject：查询结果，将结果封装为对象
+				* 一般用于聚合函数的查询
